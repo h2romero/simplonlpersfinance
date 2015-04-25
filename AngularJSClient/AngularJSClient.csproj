@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{12A458D6-8731-4E9E-A278-CFE78B364409}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AngularJSClient</RootNamespace>
+    <AssemblyName>AngularJSClient</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\css\angular-carousel.css" />
+    <Content Include="css\css\bootstrap-editable.css" />
+    <Content Include="css\css\business-casual.css" />
+    <Content Include="css\css\styles.css" />
+    <Content Include="css\img\clear.png" />
+    <Content Include="css\img\loading.gif" />
+    <Content Include="img\abstract.jpg" />
+    <Content Include="img\bg.jpg" />
+    <Content Include="img\bg_suburb.jpg" />
+    <Content Include="img\calcandpen.jpg" />
+    <Content Include="img\dollarsign.jpg" />
+    <Content Include="img\finance-logo.png" />
+    <Content Include="img\finance.jpg" />
+    <Content Include="img\finance.png" />
+    <Content Include="img\graph-logo.jpg" />
+    <Content Include="img\intro-pic.jpg" />
+    <Content Include="img\moneysphere.jpg" />
+    <Content Include="img\slide-1.jpg" />
+    <Content Include="img\slide-2.jpg" />
+    <Content Include="img\slide-3.jpg" />
+    <Content Include="img\upwardgraph.jpg" />
+    <Content Include="img\worldata.jpg" />
+    <Content Include="js\controller\carousel.js" />
+    <Content Include="js\lib\angular-carousel.js" />
+    <Content Include="js\lib\angular-touch.js" />
+    <Content Include="js\lib\angular.min.js" />
+    <Content Include="js\lib\bootstrap-editable.min.js" />
+    <Content Include="js\lib\jquery-1.11.0.js" />
+    <Content Include="js\lib\locales\bootstrap-datepicker.br.js" />
+    <Content Include="js\lib\locales\bootstrap-datepicker.cs.js" />
+    <Content Include="js\lib\locales\bootstrap-datepicker.da.js" />
+    <Content Include="js\lib\locales\bootstrap-datepicker.de.js" />
+    <Content Include="js\lib\locales\bootstrap-datepicker.es.js" />
+    <Content Include="js\lib\locales\bootstrap-datepicker.fi.js" />
+    <Content Include="js\lib\locales\bootstrap-datepicker.fr.js" />
+    <Content Include="js\lib\locales\bootstrap-datepicker.id.js" />
+    <Content Include="js\lib\locales\bootstrap-datepicker.is.js" />
+    <Content Include="js\lib\locales\bootstrap-datepicker.it.js" />
+    <Content Include="js\lib\locales\bootstrap-datepicker.ja.js" />
+    <Content Include="js\lib\locales\bootstrap-datepicker.kr.js" />
+    <Content Include="js\lib\locales\bootstrap-datepicker.lt.js" />
+    <Content Include="js\lib\locales\bootstrap-datepicker.lv.js" />
+    <Content Include="js\lib\locales\bootstrap-datepicker.ms.js" />
+    <Content Include="js\lib\locales\bootstrap-datepicker.nb.js" />
+    <Content Include="js\lib\locales\bootstrap-datepicker.nl.js" />
+    <Content Include="js\lib\locales\bootstrap-datepicker.pl.js" />
+    <Content Include="js\lib\locales\bootstrap-datepicker.pt.js" />
+    <Content Include="js\lib\locales\bootstrap-datepicker.ru.js" />
+    <Content Include="js\lib\locales\bootstrap-datepicker.sv.js" />
+    <Content Include="js\lib\locales\bootstrap-datepicker.th.js" />
+    <Content Include="js\lib\locales\bootstrap-datepicker.tr.js" />
+    <Content Include="js\lib\locales\bootstrap-datepicker.zh-CN.js" />
+    <Content Include="js\lib\locales\bootstrap-datepicker.zh-TW.js" />
+    <Content Include="js\lib\modal\ui-bootstrap-custom-0.12.0.min.js" />
+    <Content Include="js\lib\modal\ui-bootstrap-custom-tpls-0.12.0.min.js" />
+    <Content Include="js\lib\ui-bootstrap-custom-0.10.0.min.js" />
+    <Content Include="js\lib\ui-bootstrap-custom-tpls-0.10.0.min.js" />
+    <Content Include="js\scripts.js" />
+    <Content Include="js\service\sharedService.js" />
+    <Content Include="js\test\test.js" />
+    <Content Include="modal-base.html" />
+    <Content Include="test.html" />
+    <Content Include="Views\Account\Details.html" />
+    <Content Include="Views\Account\List.html" />
+    <Content Include="Views\Company\Details.html" />
+    <Content Include="Views\Company\List.html" />
+    <Content Include="Header.html" />
+    <Content Include="index.html" />
+    <Content Include="Views\partials\contact.html" />
+    <Content Include="Views\partials\tpl\contact.tpl.html" />
+    <Content Include="Views\partials\logout.html" />
+    <Content Include="Views\partials\register.html" />
+    <Content Include="Views\partials\login-base.html" />
+    <Content Include="Views\partials\tpl\logout.tpl.html" />
+    <Content Include="Views\partials\tpl\register.tpl.html" />
+    <Content Include="Views\Transaction\Chart.html" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="css\css\bootstrap-combined.min.css" />
+    <Content Include="css\css\bootstrap-theme.css" />
+    <Content Include="css\css\bootstrap-theme.css.map" />
+    <Content Include="css\css\bootstrap-theme.min.css" />
+    <Content Include="css\css\bootstrap.css" />
+    <Content Include="css\css\bootstrap.css.map" />
+    <Content Include="css\css\bootstrap.min.css" />
+    <Content Include="css\css\xeditable.css" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="css\smoothness\images\animated-overlay.gif" />
+    <Content Include="css\smoothness\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="css\smoothness\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="css\smoothness\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="css\smoothness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="css\smoothness\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="css\smoothness\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="css\smoothness\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="css\smoothness\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="css\smoothness\images\ui-icons_222222_256x240.png" />
+    <Content Include="css\smoothness\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="css\smoothness\images\ui-icons_454545_256x240.png" />
+    <Content Include="css\smoothness\images\ui-icons_888888_256x240.png" />
+    <Content Include="css\smoothness\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="css\smoothness\jquery-ui-1.10.4.custom.css" />
+    <Content Include="css\smoothness\jquery-ui-1.10.4.custom.min.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Views\Home\Main.html" />
+    <Content Include="Views\partials\login.html" />
+    <Content Include="Views\partials\tpl\login.tpl.html" />
+    <Content Include="Views\Transaction\Details.html" />
+    <Content Include="Views\Transaction\List.html" />
+    <Content Include="css\style.css" />
+    <Content Include="img\angularjs.png" />
+    <Content Include="js\appFinance.js" />
+    <Content Include="js\controller\account.js" />
+    <Content Include="js\controller\company.js" />
+    <Content Include="js\controller\header.js" />
+    <Content Include="js\controller\login.js" />
+    <Content Include="js\controller\member.js" />
+    <Content Include="js\controller\nav.js" />
+    <Content Include="js\controller\transaction.js" />
+    <Content Include="js\lib\angular-cookies.min.js" />
+    <Content Include="js\lib\angular-resource.min.js" />
+    <Content Include="js\lib\angular-route.min.js" />
+    <Content Include="js\lib\angular-sanitize.min.js" />
+    <Content Include="js\lib\angular-strap.js" />
+    <Content Include="js\lib\angular-strap.min.js" />
+    <Content Include="js\lib\angular-strap.tpl.js" />
+    <Content Include="js\lib\angular-strap.tpl.min.js" />
+    <Content Include="js\lib\angular_v1.2.2.min.js" />
+    <Content Include="js\lib\bootstrap.js" />
+    <Content Include="js\lib\bootstrap.min.js" />
+    <Content Include="js\lib\jquery-1.10.2.js" />
+    <Content Include="js\lib\jquery-1.9.1.min.js" />
+    <Content Include="js\lib\jquery-ui-1.10.4.custom.js" />
+    <Content Include="js\lib\jquery-ui-1.10.4.custom.min.js" />
+    <Content Include="js\lib\ng-google-chart.js" />
+    <Content Include="js\lib\xeditable.min.js" />
+    <Content Include="js\service\directives.js" />
+    <Content Include="js\service\factories.js" />
+    <Content Include="js\service\searchService.js" />
+    <Content Include="js\service\userAccountService.js" />
+    <Content Include="packages.config" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="js\lib\angular-strap.min.js.map" />
+    <Content Include="js\lib\angular-strap.tpl.min.js.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50274</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:50275/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

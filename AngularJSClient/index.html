@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="FinanceApp">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>3 Carousel Layout (BS 3)</title>
+    <meta name="generator" content="Bootply" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="css/css/bootstrap.css" rel="stylesheet" />
+    <link href="css/css/bootstrap-theme.css" rel="stylesheet" />
+    <link href="css/css/xeditable.css" rel="stylesheet" />
+    <link href="css/css/bootstrap-editable.css" rel="stylesheet" />
+    <link href="css/smoothness/jquery-ui-1.10.4.custom.css" rel="stylesheet" />
+    <link href="css/css/angular-carousel.css" rel="stylesheet" />
+    <!--<link href="css/style.css" rel="stylesheet" />-->
+    <!--[if lt IE 9]>
+        <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="css/css/styles.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="navbar-wrapper">
+        <div class="container">
+            <div class="navbar navbar-inverse navbar-static-top">
+
+                <div class="navbar-header">
+                    <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <!--<img src="img/finance-logo.png" style="width: 70px; margin: 13px 0 0 1px; position: absolute; top: -25px; left: -71px; z-index: 1;" />-->
+                    <!--<a class="navbar-brand" href="#">My Finances</a>-->
+                </div>
+                <div class="navbar-collapse collapse" ng-controller="HeaderCtrl" style="margin: 0 0 0 7px;">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#" style="padding: 0;"><img src="img/finance-logo.png" style="width: 39PX; margin: 5px 0 0 1px;" /></a></li>
+                        <!--<li><a href="http://www.bootply.com" target="ext">About</a></li>-->
+                        <!--<li><a href="javascript:void(0);" target="ext">About</a></li>-->
+                        <li><a href="#/contact">Contact</a></li>
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">My Account<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#/login" ng-show="!loginService.isLogged()">Log in</a></li>
+                                <li><a href="#/register" ng-show="!loginService.isLogged()">Register</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#/logout" ng-show="loginService.isLogged()" ng-click="logout()">Log out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-right navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-search"></i></a>
+                            <ul class="dropdown-menu" style="padding:12px;">
+                                <form class="form-inline">
+                                    <button type="submit" class="btn btn-default pull-right"><i class="glyphicon glyphicon-search"></i></button><input type="text" class="form-control pull-left" placeholder="Search">
+                                </form>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> <i class="glyphicon glyphicon-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#/login" ng-show="!loginService.isLogged()">Log in</a></li>
+                                <li><a href="#/register" ng-show="!loginService.isLogged()">Register</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#/logout" ng-show="loginService.isLogged()" ng-click="logout()">Log out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div><!-- /container -->
+    </div><!-- /navbar wrapper -->
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide" >
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="item">
+                <!--<img src="/img/bg_suburb.jpg" class="img-responsive">-->
+                <img src="img/calcandpen.jpg" class="img-responsive" />
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>Secure Access</h1>
+                        <pthis is="" an="" example="" layout="" with="" carousel="" that="" uses="" the="" bootstrap="" 3="" styles.
+                            <="" small=""><p></p>
+                            <p>
+                                <a class="btn btn-lg btn-primary" href="http://getbootstrap.com">Learn More</a>
+                            </p>
+                        </pthis>
+                    </div>
+                </div>
+            </div>
+            <div class="item active">
+                <!--<img src="http://lorempixel.com/1500/600/abstract/1" class="img-responsive">-->
+                <img src="img/abstract.jpg" class="img-responsive"/>
+                <div class="container" ng-show="!getLogStatus()" ng-controller="memberCtrl">
+                    <div class="carousel-caption">
+                        <h1>Easy way to keep track of your finances</h1>
+                        <p>See all your transactions anonymously and securely</p>
+                        <p><a class="btn btn-large btn-primary" href="#">Learn more</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="img/worldata.jpg" class="img-responsive" />
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>Percentage-based sizing</h1>
+                        <p>With "mobile-first" there is now only one percentage-based grid.</p>
+                        <p><a class="btn btn-large btn-primary" href="#">Browse gallery</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+    </div>
+    <!-- /.carousel -->
+
+    <div class="container-parent">
+        <div class="container">
+
+
+            <div ng-show="getLogStatus()" class="panel-tab-header" ng-controller="memberCtrl">
+                <ul class="nav nav-tabs" bs-navbar>
+                    <li ng-class="tabClass(tab)" ng-repeat="tab in tabs" tab="tab" data-match-route="{{tab.link | limitTo :1-tab.link.length}}">
+                        <a href="{{tab.link}}" ng-click="setSelectedTab(tab)">{{tab.label}}</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div ng-view=""></div>
+
+
+        </div>
+    </div>
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+    <div ng-show="!getLogStatus()" class="container marketing" ng-controller="memberCtrl">
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <img class="img-circle" src="img/dollarsign.jpg" />
+                <h2>Know where your money is</h2>
+                <p>Secure information everywhere you go. On your phone, tablet, or PC</p>
+                <p><a class="btn btn-default" href="#">View details »</a></p>
+            </div>
+            <div class="col-md-4 text-center">
+                <img class="img-circle" src="img/finance.jpg" />
+                <h2>All your transactions at a glance</h2>
+                <p>Easy to upload and manage transactions</p>
+                <p><a class="btn btn-default" href="#">View details »</a></p>
+            </div>
+            <div class="col-md-4 text-center">
+                <img class="img-circle" src="img/upwardgraph.jpg" />
+                <h2>Stay on top of trends</h2>
+                <p>Graphs and lists help to see how your money is trending</p>
+                <p><a class="btn btn-default" href="#">View details »</a></p>
+            </div>
+        </div><!-- /.row -->
+        <!-- START THE FEATURETTES -->
+        <hr class="featurette-divider">
+        <div class="featurette">
+            <img class="featurette-image img-circle pull-right" src="img/moneysphere.jpg" />
+            <h2 class="featurette-heading">Dream Big <span class="text-muted">The world is yours</span></h2>
+            <p class="lead">Managing your money will help you get a hold of your feature. It is easy with the right tools.</p>
+        </div>
+        <hr class="featurette-divider">
+        <!--<div class="featurette">
+            <img class="featurette-image img-circle pull-left" src="http://placehold.it/512">
+            <h2 class="featurette-heading">Smaller Footprint. <span class="text-muted">Lightweight.</span></h2>
+            <p class="lead">The new Bootstrap 3 promises to be a smaller build. The separate Bootstrap base and responsive.css files have now been merged into one. There is no more fixed grid, only fluid.</p>
+        </div>
+        <hr class="featurette-divider">
+        <div class="featurette">
+            <img class="featurette-image img-circle pull-right" src="http://placehold.it/512">
+            <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Flatness.</span></h2>
+            <p class="lead">A big design trend for 2013 is "flat" design. Gone are the days of excessive gradients and shadows. Designers are producing cleaner flat designs, and Bootstrap 3 takes advantage of this minimalist trend.</p>
+        </div>
+        <hr class="featurette-divider">-->
+        <!-- /END THE FEATURETTES -->
+        <!-- FOOTER -->
+        <footer>
+            <p class="pull-right"><a href="#">Back to top</a></p>
+            <p>&copy; Copyright 2014 <!--<a href="http://www.bootply.com/62603">Edit on Bootply.com</a></p>-->
+        </footer>
+    </div><!-- /.container -->
+    <!-- script references -->
+    <script src="js/lib/jquery-1.10.2.js"></script>
+
+    <!--<script src="js/lib/jquery-1.9.1.min.js"></script>-->
+    <!--<script src="http://code.jquery.com/jquery-1.8.3.js"></script>-->
+    <!--<script src="//code.jquery.com/jquery-1.10.2.js"></script>-->
+    <!--<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>-->
+    <!--<script src="js/lib/jquery-ui-1.10.4.custom.min.js"></script>-->
+    <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+    <script src="js/lib/angular.min.js"></script>
+    <script src="https://rawgit.com/betsol/angular-input-date/master/src/angular-input-date.js"></script>
+    <script src="js/lib/modal/ui-bootstrap-custom-0.12.0.min.js"></script>
+    <script src="js/lib/modal/ui-bootstrap-custom-tpls-0.12.0.min.js"></script>
+    <!--<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.2.js"></script>-->
+    <!--<script src="js/lib/ui-bootstrap-custom-0.10.0.min.js"></script>
+    <script src="js/lib/ui-bootstrap-custom-tpls-0.10.0.min.js"></script>-->
+
+    <script src="js/lib/angular-route.min.js"></script>
+    <script src="js/lib/angular-resource.min.js"></script>
+    <script src="js/lib/angular-strap.min.js"></script>
+    <script src="js/lib/angular-strap.tpl.min.js"></script>
+    <script src="js/lib/xeditable.min.js"></script>
+
+    <script src="js/lib/bootstrap.min.js"></script>
+
+    <!--<script src="js/lib/bootstrap-editable.min.js"></script>-->
+
+    <script src="js/lib/angular-touch.js"></script>
+    <script src="js/lib/angular-carousel.js"></script>
+    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.6.0/ui-bootstrap-tpls.min.js"></script>-->
+    <!--<script src="js/lib/angular-cookies.min.js"></script>
+    <script src="js/lib/angular-sanitize.min.js"></script>-->
+    <!--<script src="js/web.js"></script>-->
+    <script src="js/appFinance.js"></script>
+    <script src="js/service/directives.js"></script>
+    <script src="js/service/factories.js"></script>
+    <script src="js/service/userAccountService.js"></script>
+    <script src="js/service/sharedService.js"></script>
+    <!--<script src="js/service/searchService.js"></script>-->
+    <script src="js/controller/carousel.js"></script>
+    <script src="js/controller/nav.js"></script>
+    <script src="js/controller/header.js"></script>
+    <script src="js/controller/company.js"></script>
+    <script src="js/controller/account.js"></script>
+    <script src="js/controller/transaction.js"></script>
+
+
+    <script src="js/controller/login.js"></script>
+    <script src="js/controller/member.js"></script>
+    
+    <script src="http://bouil.github.io/angular-google-chart/ng-google-chart.js"></script>
+</body>
+</html>

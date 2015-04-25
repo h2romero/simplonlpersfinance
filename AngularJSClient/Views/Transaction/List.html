@@ -1,0 +1,131 @@
+﻿<script type="text/ng-template" id="editModalContent.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="cancel()">&times;</button>
+        <h3 class="modal-title">{{action}} Transaction</h3>
+    </div>
+    <div class="modal-body">
+        <div class="panel-body">
+            <!--<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" />-->
+            <form role="form" name="form">
+                <div class="form-group">
+                    <label class="control-label" for="accountname">Account</label>
+                    <input class="form-control" type="text" auto-complete ui-items="accountnames" ng-model="transaction.accountname" name="accountname" placeholder="Company XYZ" required />
+                    <span class="required" ng-show="submitted && form.accountname.$error.required">*</span>
+                </div>
+                <div class="form-group" ng-class="{error: form.Transaction.$invalid}">
+                    <label class="control-label" for="amountpaid">Pay</label>
+                    <input class="form-control" type="number" ng-model="transaction.amountpaid" value="transaction.amountpaid | currency" name="Text" placeholder="10.50" />
+                </div>
+                <div class="form-group" ng-class="{error: form.Transaction.$invalid}">
+                    <label class="control-label form-control-block" for="duedate">Due Date</label>
+                    <input class="form-control form-control-inline form-control-95-pct" type="text" datepicker ng-model="transaction.duedate" placeholder="5/20/2014" />
+                </div>
+                <div class="form-group" ng-class="{error: form.Transaction.$invalid}">
+                    <label class="control-label" for="ispaid">Paid</label>
+                    <input type="checkbox" ng-model="transaction.ispaid" name="Text" placeholder=" " />
+                </div>
+
+                <button ng-click="save()" class="btn btn-default">
+                    {{action}}
+                </button>
+                <!--<a href="#/transactions/transaction" class="btn">Cancel</a>-->
+                <a ng-click="cancel()" class="btn">Cancel</a>
+                <br /><br />
+                <div class="required" ng-show="submitted && form.accountname.$error.required">* Required</div>
+            </form>
+            <br /><br />
+
+        </div>
+    </div>
+</script>
+
+<div class="panel-gral">
+    <div class="panel panel-heading" ng-show="getLogStatus()">
+        <div ng-show="false" from="Hector" greet="people" />
+
+
+        <form class="form-search" style="float: left;">
+            <div class="btn-group">
+                <!--<input type="text" datepicker ng-model="startdate" /> &nbsp;-->
+                <input class="form-control form-control-inline form-control-95-pct" style="width: 100px;" type="text" datepicker ng-model="startdate" placeholder="5/20/2014" /> &nbsp; &nbsp;
+                <input class="form-control form-control-inline form-control-95-pct" style="width: 100px;" type="text" datepicker ng-model="enddate" placeholder="5/20/2014" /> &nbsp; &nbsp;
+            </div>
+            <button ng-click="view()" type="submit" class="btn btn-primary">View</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{toJsDate(startdate) | date:'MMMM'}} - {{toJsDate(enddate) | date:'MMMM'}}</span><br />
+            <div><a href="#/transactions/transaction" ng-click="add_month(-1)"><< 1 Month Back</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#/transactions/transaction" ng-click="add_month(1)">1 Month Forward >></a></div>
+        </form>
+        <!--<div style="border-left: 1px solid #EEEEEE; height: 36px; margin: 0 28px; float: left;"></div>-->
+        <form class="form-search" style="text-align: right">
+            <div class="btn-group">
+                <input type="text" ng-model="query" ng-keyup="view()" class="btn btn-default" placeholder="Search" />
+                <button ng-click="view()" type="submit" class="btn"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+            <button ng-click="query=''; reset()" ng-disabled="!query" type="submit" class="btn">Reset</button>
+        </form>
+
+        <hr class="angular" />
+        <div ng-show="transactions" google-chart chart="chart" style="padding:0; width:400px; margin: 0 auto 20px;"></div>
+        <hr class="angular" />
+
+        <div class="table-responsive">
+            <table class="table table-striped table-condensed table-hover transaction">
+                <thead>
+                <th>
+                    <a ng-click="predicate = 'accountname'; reverse=!reverse">Account</a>
+                    <span ng-show="predicate=='accountname' && reverse==false"><i class="glyphicon glyphicon-arrow-down"></i></span>
+                    <span ng-show="predicate=='accountname' && reverse==true"><i class="glyphicon glyphicon-arrow-up"></i></span>
+                </th>
+                <th>
+                    <a ng-click="predicate = 'accounttypecode'; reverse=!reverse">Type</a>
+                    <span ng-show="predicate=='accounttypecode' && reverse==false"><i class="glyphicon glyphicon-arrow-down"></i></span>
+                    <span ng-show="predicate=='accounttypecode' && reverse==true"><i class="glyphicon glyphicon-arrow-up"></i></span>
+                </th>
+                <th>
+                    <a ng-click="predicate = 'amountpaid'; reverse=!reverse">Pay</a>
+                    <span ng-show="predicate=='amountpaid' && reverse==false"><i class="glyphicon glyphicon-arrow-down"></i></span>
+                    <span ng-show="predicate=='amountpaid' && reverse==true"><i class="glyphicon glyphicon-arrow-up"></i></span>
+                </th>
+                <th>
+                    <a ng-click="predicate = 'duedate'; reverse=!reverse">Due Date</a>
+                    <span ng-show="predicate=='duedate' && reverse==false"><i class="glyphicon glyphicon-arrow-down"></i></span>
+                    <span ng-show="predicate=='duedate' && reverse==true"><i class="glyphicon glyphicon-arrow-up"></i></span>
+                </th>
+                <th>
+                    <a ng-click="predicate = 'ispaid'; reverse=!reverse">Is Paid</a>
+                    <span ng-show="predicate=='ispaid' && reverse==false"><i class="glyphicon glyphicon-arrow-down"></i></span>
+                    <span ng-show="predicate=='ispaid' && reverse==true"><i class="glyphicon glyphicon-arrow-up"></i></span>
+                </th>
+                <!--<th sorted="DueDate">Due</th>-->
+                <!--<th><a href="#/transactions/newTransaction"><i class="glyphicon glyphicon-plus"></i></a> </th>-->
+                <th><a href="javascript:void(0)" ng-click="open()"><i class="glyphicon glyphicon-plus"></i></a> </th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="transaction in transactions | orderBy:predicate:!reverse" id="transaction_{{transaction.transactionid}}">
+                        <td><a href="#" editable-text="transaction.accountname" onaftersave="updateAccount(transaction)">{{transaction.accountname || 'empty'}}</a></td>
+                        <td><a href="#" editable-text="transaction.accounttypecode" onaftersave="updateAccount(transaction)">{{transaction.accounttypecode || 'empty'}}</a></td>
+                        <td><a href="#" editable-text="transaction.amountpaid" onaftersave="updateAccount(transaction)">{{transaction.amountpaid | currency : ''}}</a></td>
+                        <!--<td><a href="#" editable-bsdate="transaction.duedate" onaftersave="updateAccount(transaction)" e-datepicker-popup="dd-MMMM-yyyy">{{(transaction.duedate | date : 'M/dd/yy') || 'empty'}}</a></td>-->
+                        <!--<td><input type="date"  value="{{ transaction.duedate | date: 'yyyy-MM-dd' }}" /></td>-->   <!--it works!-->
+                        <!--<td><a href="#" editable-bsdate="transaction.duedate" e-datepicker-popup="dd-MMMM-yyyy">{{ (transaction.duedate | date:"MM/dd/yyyy") || 'empty' }}</a></td>-->
+                        <!--<td><a href="#" id="dob" data-format="dd.mm.yyyy">15.05.1984</a></td>-->
+                        <td><a href="#" editable-date="transaction.duedate" onaftersave="updateAccount(transaction)" e-datepicker-popup="dd-MMMM-yyyy">{{(transaction.duedate | date: 'M/dd/yy')  || 'empty'}}</a></td>
+                        <!--<td><a href="#" editable-text="transaction.ispaid" onaftersave="updateAccount(transaction)"><input type="checkbox" ng-model="transaction.ispaid"></a></td>-->
+                        <td><input type="checkbox" ng-model="transaction.ispaid" ng-change="updateAccount(transaction)"></td>
+                        <!--<td>{{transaction.DueDate | date:mediumDate}}</td>-->
+                        <td>
+                            <!--<a href="#/transactions/editTransaction/{{transaction.transactionid}}"><i class="glyphicon glyphicon-edit"></i></a>-->
+                            <!--<a ng-click="editLink(transaction.transactionid)"><i class="glyphicon glyphicon-edit"></i></a>-->
+                            <a href="javascript:void(0)" ng-click="open(transaction.transactionid)"><i class="glyphicon glyphicon-edit"></i></a>
+                            <a href="javascript:void(0)" ng-click="delete()"><i class="glyphicon glyphicon-remove"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr><td><td></td><td>{{totPaid() | currency : '$'}}</td><td></td><td></td><td></td></tr>
+                </tfoot>
+            </table>
+        </div>
+        <!--<a href="#" editable-bsdate="user.dob" e-datepicker-popup="dd-MMMM-yyyy">{{ (user.dob | date:"dd/MM/yyyy") || 'empty' }}</a>-->
+        <a ng-show="has_more()" ng-click="show_more()">Show more</a>
+    </div>
+</div>

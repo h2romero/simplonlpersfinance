@@ -1,0 +1,61 @@
+﻿<div class="panel-gral">
+    <div class="panel panel-heading" ng-show="getLogStatus()">
+        <div ng-show="false" from="Hector" greet="people" />
+
+        <form class="form-search">
+            <div class="btn-group">
+                <input type="text" ng-model="query" class="btn btn-default" placeholder="Search" />
+                <button ng-click="reset()" type="submit" class="btn"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+            <button ng-click="query=''; reset()" ng-disabled="!query" type="submit" class="btn">Reset</button>
+        </form>
+        <div class="table-responsive">
+            <table class="table table-striped table-condensed table-hover">
+                <thead>
+                <th>
+                    <a ng-click="sort('AccountNumber')">Number</a>
+                    <span ng-show="sort_order=='AccountNumber' && is_desc==true"><i class="glyphicon glyphicon-arrow-down"></i></span>
+                    <span ng-show="sort_order=='AccountNumber' && is_desc==false"><i class="glyphicon glyphicon-arrow-up"></i></span>
+                </th>
+                <th>
+                    <a ng-click="sort('AccountName')">Name</a>
+                    <span ng-show="sort_order=='AccountName' && is_desc==true"><i class="glyphicon glyphicon-arrow-down"></i></span>
+                    <span ng-show="sort_order=='AccountName' && is_desc==false"><i class="glyphicon glyphicon-arrow-up"></i></span>
+                </th>
+                <th>
+                    <a ng-click="sort('AccountTypeCode')">Type</a>
+                    <span ng-show="sort_order=='AccountTypeCode' && is_desc==true"><i class="glyphicon glyphicon-arrow-down"></i></span>
+                    <span ng-show="sort_order=='AccountTypeCode' && is_desc==false"><i class="glyphicon glyphicon-arrow-up"></i></span>
+                </th>
+                <th>
+                    <a ng-click="sort('CurrencyCode')">Currency</a>
+                    <span ng-show="sort_order=='CurrencyCode' && is_desc==true"><i class="glyphicon glyphicon-arrow-down"></i></span>
+                    <span ng-show="sort_order=='CurrencyCode' && is_desc==false"><i class="glyphicon glyphicon-arrow-up"></i></span>
+                </th>
+                <th>
+                    <a ng-click="sort('OwnerCode')">Owner</a>
+                    <span ng-show="sort_order=='OwnerCode' && is_desc==true"><i class="glyphicon glyphicon-arrow-down"></i></span>
+                    <span ng-show="sort_order=='OwnerCode' && is_desc==false"><i class="glyphicon glyphicon-arrow-up"></i></span>
+                </th>
+                <!--<th sorted="DueDate">Due</th>-->
+                <th><a href="#/transactions/newAccount"><i class="glyphicon glyphicon-plus"></i></a> </th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="account in accounts" id="account_{{account.AccountID}}">
+                        <td>{{account.AccountNumber}}</td>
+                        <td>{{account.AccountName}}</td>
+                        <td>{{account.AccountTypeCode}}</td>
+                        <td>{{account.CurrencyCode}}</td>
+                        <td>{{account.OwnerCode}}</td>
+                        <!--<td>{{account.DueDate | date:mediumDate}}</td>-->
+                        <td>
+                            <a href="#/transactions/editAccount/{{account.AccountID}}"><i class="glyphicon glyphicon-edit"></i></a>
+                            <a ng-click="delete()"><i class="glyphicon glyphicon-remove"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <a ng-show="has_more()" ng-click="show_more()">Show more</a>
+        </div>
+</div>

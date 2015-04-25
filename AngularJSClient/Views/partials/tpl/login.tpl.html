@@ -1,0 +1,60 @@
+<div class="bs-example">
+    
+<form role="form" name="form1">
+    <div class="form-group">
+        <p data-ng-show="isLoggedIn">Welcome!! : <span>{{userName}}</span></p>
+    <label for="exampleInputEmail1">User</label>
+        <input xng-focus="!isLoggedIn" type="text" placeholder="Enter name" class="form-control" ng-model="userData.userName" required>
+    </div>
+    <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" placeholder="Password" id="exampleInputPassword1" class="form-control" ng-model="userData.password" required>
+    </div>
+    <button class="btn btn-primary no-opacity" type="submit" ng-click="loginUser()" ng-disabled="form1.$invalid">Submit</button>
+    <br /><br />
+    <a ng-click="registerLink()">Register</a>
+    <br /><br />
+    <div>
+        <span data-ng-show="isRegistered">User Registered Successfully</span><br />
+        <span data-ng-show="isLoggedIn">Hello : {{userName}}</span><br />
+        <span data-ng-show="false">Your Bearer Token is : {{bearerToken}}</span>
+
+        <p data-ng-show="loading"><img src="https://app.userapp.io/img/ajax-loader-transparent.gif"></p>
+        <p data-ng-show="!isLoggedIn">{{msgtxt}}</p>
+    </div>
+    <br /><br />
+    <button id="getValues" data-ng-click="getValues()" data-ng-show="false">Get Values</button>
+
+    <ul>
+        <li data-ng-repeat="v in values">
+            <div>
+                <strong>{{v}}</strong>
+            </div>
+        </li>
+    </ul>
+</form>
+</div>
+
+<!-- Button trigger modal -->
+<!--<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    Launch demo modal
+</button>-->
+
+<!-- Modal -->
+<!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>-->

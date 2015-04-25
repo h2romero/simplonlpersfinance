@@ -1,0 +1,31 @@
+﻿<h2>{{action}} Company</h2>
+
+<form>
+    <div class="control-group" ng-class="{error: form.Company.$invalid}">
+        <label class="control-label" for="Company">Company</label>
+        <div class="controls">
+            <input type="text" ng-model="company.CompanyName" name="Text" placeholder=" " />
+        </div>
+    </div>
+
+    <!--<div class="control-group" ng-class="{error: form.DueDate.$invalid}">
+        <label class="control-label" for="DueDate">Due</label>
+        <div class="controls">
+            <input type="text" ng-model="company.DueDate" name="DueDate" placeholder=" " />
+        </div>
+    </div>-->
+
+    <div class="control-group" ng-class="{error: form.UserName.$invalid}">
+        <label class="control-label" for="UserName">User</label>
+        <div class="controls">
+            <input type="text" ng-model="company.UserName" name="Priority" placeholder=" " value="testuser" />
+        </div>
+    </div>
+
+    <div class="form-actions">
+        <button ng-click="save()" class="btn btn-primary">
+            {{action}}
+        </button> 
+        <a href="#/" class="btn">Cancel</a>
+    </div>
+</form>

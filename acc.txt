@@ -1,0 +1,19 @@
+ 
+AngularJS
+Follow the steps below and press Next when you are ready to continue.
+
+1. Download & install the Project
+
+Download the .zip file and extract it to your harddrive.
+
+ DOWNLOAD THE ANGULARJS BOILERPLATE PROJECT
+
+2. Insert your App Id
+
+Open the file js/app.js and replace YOUR-USERAPP-APP-ID with 53744cbaa4ad8.
+
+3. Try it
+
+Configure a web server to boilerplate folder and browse to it with your web browser. 
+Try to sign up and log in. You will get an error saying that the articles could not be 
+loaded. Go to the next step to set up your back-end.

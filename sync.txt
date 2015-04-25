@@ -1,0 +1,1 @@
+C:\dev\WebApiService>xcopy *.* y:\dev\WebApiService\ /d /s /exclude:exclude.txt

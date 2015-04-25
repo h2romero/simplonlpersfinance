@@ -1,0 +1,39 @@
+<div class="bs-example">
+<form role="form" name="form1">
+    <div class="form-group">
+        <p data-ng-show="isLoggedIn">Welcome!! : <span>{{userName}}</span></p>
+        <label for="exampleInputEmail1">User</label>
+        <input type="text" placeholder="Enter name" class="form-control" ng-model="userData.userName" required>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" placeholder="Password" id="exampleInputPassword1" class="form-control" ng-model="userData.password" required>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputConfirmPassword1">Confirm Password</label>
+        <input type="password" placeholder="Confirm Password" id="exampleInputConfirmPassword1" class="form-control" ng-model="userData.confirmPassword" required>
+    </div>
+    <button class="btn btn-primary no-opacity" type="submit" ng-click="registerUser()" ng-disabled="form1.$invalid">Submit</button>
+    
+    <br /><br />
+    <div>
+        <span data-ng-show="isRegistered">User Registered Successfully</span><br />
+        <span data-ng-show="isRegistered"><a ng-click="loginLink()">Log Inn</a></span><br />
+        <span data-ng-show="isLoggedIn">Hello : {{userName}}</span><br />
+        <span data-ng-show="false">Your Bearer Token is : {{bearerToken}}</span>
+
+        <!--<p data-ng-show="loading"><img src="https://app.userapp.io/img/ajax-loader-transparent.gif"></p>-->
+        <p data-ng-show="!isRegistered">{{msgtxt}}</p>
+    </div>
+    <br /><br />
+    <button id="getValues" data-ng-click="getValues()" data-ng-show="false">Get Values</button>
+
+    <ul>
+        <li data-ng-repeat="v in values">
+            <div>
+                <strong>{{v}}</strong>
+            </div>
+        </li>
+    </ul>
+</form>
+</div>

@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Home_Finance3" Class="FinanceDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\SqlExpress;Initial Catalog=Home_Finance3;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DefaultConnection" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Company" Member="Companies">
+    <Type Name="Company">
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CompanyName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Association Name="Company_Account" Member="Accounts" ThisKey="CompanyID" OtherKey="CompanyID" Type="Account" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Transactions" Member="Transactions">
+    <Type Name="Transaction">
+      <Column Name="TransactionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AccountID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AmountDue" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="AmountBudgeted" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="AmountPaid" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="DueDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TransactionDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsPaid" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Association Name="Account_Transaction" Member="Account" ThisKey="AccountID" OtherKey="AccountID" Type="Account" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Account" Member="Accounts">
+    <Type Name="Account">
+      <Column Name="AccountID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AccountNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AccountName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AccountTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CurrencyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OwnerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Association Name="Account_Transaction" Member="Transactions" ThisKey="AccountID" OtherKey="AccountID" Type="Transaction" />
+      <Association Name="Company_Account" Member="Company" ThisKey="CompanyID" OtherKey="CompanyID" Type="Company" IsForeignKey="true" />
+      <Association Name="Currency_Account" Member="Currency" ThisKey="CurrencyID" OtherKey="CurrencyID" Type="Currency" IsForeignKey="true" />
+      <Association Name="AccountType_Account" Member="AccountType" ThisKey="AccountTypeID" OtherKey="AccountTypeID" Type="AccountType" IsForeignKey="true" />
+      <Association Name="Owner_Account" Member="Owner" ThisKey="OwnerID" OtherKey="OwnerID" Type="Owner" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Currency" Member="Currencies">
+    <Type Name="Currency">
+      <Column Name="CurrencyID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CurrencyName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CurrencyCode" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(256)" CanBeNull="true" />
+      <Association Name="Currency_Account" Member="Accounts" ThisKey="CurrencyID" OtherKey="CurrencyID" Type="Account" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccountType" Member="AccountTypes">
+    <Type Name="AccountType">
+      <Column Name="AccountTypeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AccountTypeName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AccountTypeCode" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="IsAsset" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Association Name="AccountType_Account" Member="Accounts" ThisKey="AccountTypeID" OtherKey="AccountTypeID" Type="Account" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Owner" Member="Owners">
+    <Type Name="Owner">
+      <Column Name="OwnerID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OwnerCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Association Name="Owner_Account" Member="Accounts" ThisKey="OwnerID" OtherKey="OwnerID" Type="Account" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Listing" Member="Listings">
+    <Type Name="Listing">
+      <Column Name="ListingID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PreQualifyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ShowingStartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EscrowDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CloseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="HomeValueRangeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FinancingID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Customer_Listing" Member="Customer" ThisKey="CustomerID" OtherKey="CustomerID" Type="Customer" IsForeignKey="true" />
+      <Association Name="HomeValueRange_Listing" Member="HomeValueRange" ThisKey="HomeValueRangeID" OtherKey="HomeValueRangeID" Type="HomeValueRange" IsForeignKey="true" />
+      <Association Name="LoanType_Listing" Member="LoanType" ThisKey="FinancingID" OtherKey="LoanTypeID" Type="LoanType" IsForeignKey="true" />
+      <Association Name="LoanType_Listing1" Member="LoanType1" ThisKey="PreQualifyID" OtherKey="LoanTypeID" Type="LoanType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Customer" Member="Customers">
+    <Type Name="Customer">
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IsInactive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Customer_Listing" Member="Listings" ThisKey="CustomerID" OtherKey="CustomerID" Type="Listing" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HomeValueRange" Member="HomeValueRanges">
+    <Type Name="HomeValueRange">
+      <Column Name="HomeValueRangeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="HomeValueRange" Member="HomeValueRange1" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IsInactive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="HomeValueRange_Listing" Member="Listings" ThisKey="HomeValueRangeID" OtherKey="HomeValueRangeID" Type="Listing" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LoanType" Member="LoanTypes">
+    <Type Name="LoanType">
+      <Column Name="LoanTypeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LoanTypeName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IsInactive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="LoanType_Listing" Member="Listings" ThisKey="LoanTypeID" OtherKey="FinancingID" Type="Listing" />
+      <Association Name="LoanType_Listing1" Member="Listings1" ThisKey="LoanTypeID" OtherKey="PreQualifyID" Type="Listing" />
+    </Type>
+  </Table>
+  <Function Name="dbo.DeleteAccount" Method="DeleteAccount">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeleteListing" Method="DeleteListing">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeleteTransaction" Method="DeleteTransaction">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.InsertListing" Method="InsertListing">
+    <Parameter Name="FirstName" Parameter="firstName" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="LastName" Parameter="lastName" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="PreQualifyID" Parameter="preQualifyID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ShowingStartDate" Parameter="showingStartDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="EscrowDate" Parameter="escrowDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="CloseDate" Parameter="closeDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="HomeValueRangeID" Parameter="homeValueRangeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FinancingID" Parameter="financingID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CreatedBy" Parameter="createdBy" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="ModifiedBy" Parameter="modifiedBy" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="NVarChar(256)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.InsertTransaction" Method="InsertTransaction">
+    <Parameter Name="AccountID" Parameter="accountID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AmountPaid" Parameter="amountPaid" Type="System.Decimal" DbType="Decimal(18,2)" />
+    <Parameter Name="DueDate" Parameter="dueDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="IsPaid" Parameter="isPaid" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="CreatedBy" Parameter="createdBy" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="ModifiedBy" Parameter="modifiedBy" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="NVarChar(256)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.spAccounts" Method="spAccounts">
+    <Parameter Name="AccountID" Parameter="accountID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="NVarChar(256)" />
+    <ElementType Name="spAccountsResult">
+      <Column Name="AccountID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AccountNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AccountName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AccountTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AccountTypeCode" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="CurrencyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CurrencyCode" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="OwnerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OwnerCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spChartTransactions" Method="spChartTransactions">
+    <Parameter Name="startdate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="enddate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="NVarChar(256)" />
+    <Parameter Name="TotalAmountPaidOverZero" Parameter="totalAmountPaidOverZero" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="spChartTransactionsResult">
+      <Column Name="accountid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="accountname" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TotalAmountPaid" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UpdateAccount" Method="UpdateAccount">
+    <Parameter Name="AccountID" Parameter="accountID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AccountNumber" Parameter="accountNumber" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="AccountName" Parameter="accountName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="CompanyID" Parameter="companyID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AccountTypeID" Parameter="accountTypeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CurrencyID" Parameter="currencyID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="OwnerID" Parameter="ownerID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="NVarChar(256)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateListing" Method="UpdateListing">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FirstName" Parameter="firstName" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="LastName" Parameter="lastName" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="PreQualifyID" Parameter="preQualifyID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ShowingStartDate" Parameter="showingStartDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="EscrowDate" Parameter="escrowDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="CloseDate" Parameter="closeDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="HomeValueRangeID" Parameter="homeValueRangeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FinancingID" Parameter="financingID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ModifiedBy" Parameter="modifiedBy" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateTransaction" Method="UpdateTransaction">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AccountID" Parameter="accountID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AmountPaid" Parameter="amountPaid" Type="System.Decimal" DbType="Decimal(18,2)" />
+    <Parameter Name="DueDate" Parameter="dueDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="IsPaid" Parameter="isPaid" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="ModifiedBy" Parameter="modifiedBy" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.spTransactions" Method="spTransactions">
+    <Parameter Name="startdate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="enddate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="NVarChar(256)" />
+    <Parameter Name="amountPaidOverZero" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="Query" Parameter="query" Type="System.String" DbType="NVarChar(256)" />
+    <ElementType Name="spTransactionsResult">
+      <Column Name="transactionid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="accountid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="accountname" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="companyname" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="accounttypecode" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="currencycode" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ownername" Type="System.String" DbType="VarChar(53)" CanBeNull="true" />
+      <Column Name="amountdue" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="amountbudgeted" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="amountpaid" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="duedate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="transactiondate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ispaid" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html ng-app='myApp'>
+<head>
+    <script src="http://code.angularjs.org/1.2.10/angular.js"></script>
+    <!--<link rel="stylesheet" href="style.css" />-->
+    <!--<script src="script.js"></script>-->
+    <script>
+        var app = angular.module('myApp', ['googlechart']);
+
+        app.controller('MainCtrl', function ($scope) {
+            var chart1 = {};
+            chart1.type = "PieChart";
+            chart1.data = [
+               ['Component', 'cost'],
+               ['Software', 50000],
+               ['Hardware', 80000]
+            ];
+            chart1.data.push(['Services', 20000]);
+            chart1.options = {
+                displayExactValues: true,
+                width: 400,
+                height: 200,
+                is3D: true,
+                chartArea: { left: 10, top: 10, bottom: 0, height: "100%" }
+            };
+
+            chart1.formatters = {
+                number: [{
+                    columnNum: 1,
+                    pattern: "$ #,##0.00"
+                }]
+            };
+
+            $scope.chart = chart1;
+
+            $scope.aa = 1 * $scope.chart.data[1][1];
+            $scope.bb = 1 * $scope.chart.data[2][1];
+            $scope.cc = 1 * $scope.chart.data[3][1];
+        });
+    </script>
+    <script src="http://bouil.github.io/angular-google-chart/ng-google-chart.js"></script>
+</head>
+<body ng-controller="MainCtrl">
+
+    <div google-chart chart="chart" style="border:1px inset black;padding:0;width:400px"></div>
+
+    <p>
+        Software: <input type=range min=10000 max=100000 value={{aa}} ng-model="aa" ng-change="chart.data[1][1]=1*aa"> {{aa}}
+    </p>
+    <p>
+        Hardware: <input type=range min=10000 max=100000 value={{bb}} ng-model="bb" ng-change="chart.data[2][1]=1*bb">{{bb}}
+    </p>
+    <p>
+        Services: <input type=range min=10000 max=100000 value={{cc}} ng-model="cc" ng-change="chart.data[3][1]=1*cc">{{cc}}
+    </p>
+    <h2>Chart data as JSON:</h2>
+    <pre style='clear:both; background-color: lightgray;'>{{chart|json}}</pre>
+</body>
+</html>

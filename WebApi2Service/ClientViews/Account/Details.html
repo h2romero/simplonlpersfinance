@@ -1,0 +1,61 @@
+﻿<h2>{{action}} Account</h2>
+
+<form>
+    <div class="control-group" ng-class="{error: form.Account.$invalid}">
+        <label class="control-label" for="AccountNumber">Account Number</label>
+        <div class="controls">
+            <input type="text" ng-model="account.AccountNumber" name="Text" placeholder=" " />
+        </div>
+    </div>
+    <div class="control-group" ng-class="{error: form.Account.$invalid}">
+        <label class="control-label" for="AccountName">Account Name</label>
+        <div class="controls">
+            <input type="text" ng-model="account.AccountName" name="Text" placeholder=" " />
+        </div>
+    </div>
+    <div class="control-group" ng-class="{error: form.Account.$invalid}">
+        <label class="control-label" for="CompanyName">Company Name</label>
+        <div class="controls">
+            <input type="text" ng-model="account.CompanyName" name="Text" placeholder=" " />
+        </div>
+    </div>
+    <div class="control-group" ng-class="{error: form.Account.$invalid}">
+        <label class="control-label" for="AccountTypeCode">Account Type</label>
+        <div class="controls">
+            <input type="text" ng-model="account.AccountTypeCode" name="Text" placeholder=" " />
+        </div>
+    </div>
+    <div class="control-group" ng-class="{error: form.Account.$invalid}">
+        <label class="control-label" for="CurrencyCode">Currency</label>
+        <div class="controls">
+            <input type="text" ng-model="account.CurrencyCode" name="Text" placeholder=" " />
+        </div>
+    </div>
+    <div class="control-group" ng-class="{error: form.Account.$invalid}">
+        <label class="control-label" for="OwnerCode">Owner</label>
+        <div class="controls">
+            <input type="text" ng-model="account.OwnerCode" name="Text" placeholder=" " />
+        </div>
+    </div>
+
+    <!--<div class="control-group" ng-class="{error: form.DueDate.$invalid}">
+        <label class="control-label" for="DueDate">Due</label>
+        <div class="controls">
+            <input type="text" ng-model="account.DueDate" name="DueDate" placeholder=" " />
+        </div>
+    </div>-->
+
+    <!--<div class="control-group" ng-class="{error: form.UserName.$invalid}">
+        <label class="control-label" for="UserName">User</label>
+        <div class="controls">
+            <input type="text" ng-model="account.UserName" name="Priority" placeholder=" " value="testuser" />
+        </div>
+    </div>-->
+
+    <div class="form-actions">
+        <button ng-click="save()" class="btn btn-primary">
+            {{action}}
+        </button> 
+        <a href="#/account" class="btn">Cancel</a>
+    </div>
+</form>

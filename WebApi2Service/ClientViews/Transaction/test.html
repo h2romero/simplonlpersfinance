@@ -1,0 +1,66 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <link href="../../css/css/bootstrap.css" rel="stylesheet" />
+    <link href="../../css/css/bootstrap-theme.css" rel="stylesheet" />
+    <!--<script src="http://code.jquery.com/jquery-1.8.3.js"></script>-->
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <!--<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>-->
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.js"></script>-->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
+    <script>
+        function putObject(path, object, value) {
+            var modelPath = path.split(".");
+
+            function fill(object, elements, depth, value) {
+                var hasNext = ((depth + 1) < elements.length);
+                if (depth < elements.length && hasNext) {
+                    if (!object.hasOwnProperty(modelPath[depth])) {
+                        object[modelPath[depth]] = {};
+                    }
+                    fill(object[modelPath[depth]], elements, ++depth, value);
+                } else {
+                    object[modelPath[depth]] = value;
+                }
+            }
+            fill(object, modelPath, 0, value);
+        }
+        var directives = angular.module('myApp', []);
+
+        directives.directive('datepicker', function () {
+            return function (scope, element, attrs) {
+                element.datepicker({
+                    inline: true,
+                    dateFormat: 'mm/dd/yy',
+                    onSelect: function (dateText) {
+                        var modelPath = $(this).attr('ng-model');
+                        putObject(modelPath, scope, dateText);
+                        scope.$apply();
+                    }
+                });
+            }
+        });
+
+        function myCtrl($scope) {
+            $scope.item = { birthDay: "10/25/2013" };
+            $scope.add = function () {
+                $scope.$apply()
+                alert($scope.item.birthDay)
+            }
+        }
+    </script>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="myCtrl" class="form-group">
+        {{item.birthDay}}
+        <p>Date: <input type="text" datepicker id="datepicker" ng-model="item.birthDay" class="form-control" /></p>
+        <button ng-click="add()" type="submit" class="btn btn-success">Next</button>
+        <br />
+
+    </div>
+</body>
+</html>

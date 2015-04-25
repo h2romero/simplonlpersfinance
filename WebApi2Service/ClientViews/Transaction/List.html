@@ -1,0 +1,58 @@
+﻿<div from="Jeremy" greet="people"/>
+
+<form class="form-search">
+    <div class="btn-group">
+        <input type="text" ng-model="query" ng-keyup="view()" class="btn btn-default" placeholder="Search" />
+        <button ng-click="view()" type="submit" class="btn"><i class="glyphicon glyphicon-search"></i></button>
+    </div>
+    <button ng-click="query=''; reset()" ng-disabled="!query" type="submit" class="btn">Reset</button>
+</form>
+&nbsp;
+<form class="form-search">
+    <div class="btn-group">
+        <input type="text" datepicker ng-model="startdate" /> &nbsp;
+        <input type="text" datepicker ng-model="enddate" /> &nbsp;
+    </div>
+    <button ng-click="view()" type="submit" class="btn">View</button>
+</form>
+
+<table class="table table-striped table-condensed table-hover transaction">
+    <thead>
+        <th>
+            <a ng-click="sort('accountname')">Account</a>
+            <span ng-show="sort_order=='accountname' && is_desc==true"><i class="glyphicon glyphicon-arrow-down"></i></span>
+            <span ng-show="sort_order=='accountname' && is_desc==false"><i class="glyphicon glyphicon-arrow-up"></i></span>
+        </th>
+        <th>
+            <a ng-click="sort('amountpaid')">Pay</a>
+            <span ng-show="sort_order=='amountpaid' && is_desc==true"><i class="glyphicon glyphicon-arrow-down"></i></span>
+            <span ng-show="sort_order=='amountpaid' && is_desc==false"><i class="glyphicon glyphicon-arrow-up"></i></span>
+        </th>
+        <th>
+            <a ng-click="sort('duedate')">Due Date</a>
+            <span ng-show="sort_order=='duedate' && is_desc==true"><i class="glyphicon glyphicon-arrow-down"></i></span>
+            <span ng-show="sort_order=='duedate' && is_desc==false"><i class="glyphicon glyphicon-arrow-up"></i></span>
+        </th>
+        <th>
+            <a ng-click="sort('ispaid')">Is Paid</a>
+            <span ng-show="sort_order=='ispaid' && is_desc==true"><i class="glyphicon glyphicon-arrow-down"></i></span>
+            <span ng-show="sort_order=='ispaid' && is_desc==false"><i class="glyphicon glyphicon-arrow-up"></i></span>
+        </th>
+        <!--<th sorted="DueDate">Due</th>-->
+        <th><a href="#/newTransaction"><i class="glyphicon glyphicon-plus"></i></a> </th>
+    </thead>
+    <tbody>
+        <tr ng-repeat="transaction in transactions" id="transaction_{{transaction.transactionid}}">
+            <td>{{transaction.accountname}}</td>
+            <td>{{transaction.amountpaid | currency : ''}}</td>
+            <td>{{transaction.duedate | date : 'shortDate'}}</td>
+            <td><input type="checkbox" ng-model="transaction.ispaid"></td>
+            <!--<td>{{transaction.DueDate | date:mediumDate}}</td>-->
+            <td>
+                <a href="#/editTransaction/{{transaction.transactionid}}"><i class="glyphicon glyphicon-edit"></i></a>
+                <a ng-click="delete()"><i class="glyphicon glyphicon-remove"></i></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<a ng-show="has_more()" ng-click="show_more()">Show more</a>

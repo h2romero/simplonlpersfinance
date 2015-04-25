@@ -1,0 +1,39 @@
+﻿<div class="panel-login">
+    <div class="panel panel-default dialog-type">
+        <div class="">
+            <h2>{{action}} Transaction</h2>
+        </div>
+        <div class="panel-body">
+            <!--<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" />-->
+            <form role="form" name="form">
+                <div class="form-group">
+                    <label class="control-label" for="accountname">Account</label>
+                    <input class="form-control" type="text" auto-complete ui-items="accountnames" ng-model="transaction.accountname" name="accountname" placeholder="Company XYZ" required />
+                    <span class="required" ng-show="submitted && form.accountname.$error.required">*</span>
+                </div>
+                <div class="form-group" ng-class="{error: form.Transaction.$invalid}">
+                    <label class="control-label" for="amountpaid">Pay</label>
+                    <input class="form-control" type="text" ng-model="transaction.amountpaid" name="Text" placeholder="10.50" />
+                </div>
+                <div class="form-group" ng-class="{error: form.Transaction.$invalid}">
+                    <label class="control-label form-control-block" for="duedate">Due Date</label>
+                    <input class="form-control form-control-inline form-control-95-pct" type="text" datepicker ng-model="transaction.duedate" placeholder="5/20/2014" />
+                </div>
+                <div class="form-group" ng-class="{error: form.Transaction.$invalid}">
+                    <label class="control-label" for="ispaid">Paid</label>
+                    <input type="checkbox" ng-model="transaction.ispaid" name="Text" placeholder=" " />
+                </div>
+
+                <button ng-click="save()" class="btn btn-default">
+                    {{action}}
+                </button>
+                <a href="#/transactions/transaction" class="btn">Cancel</a>
+                <br /><br />
+                <div class="required" ng-show="submitted && form.accountname.$error.required">* Required</div>
+            </form>
+            <br /><br />
+
+        </div>
+
+    </div>
+</div>
