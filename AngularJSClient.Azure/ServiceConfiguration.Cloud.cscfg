@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="AngularJSClient.Azure" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">
+  <Role name="AngularJSClient">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=webapi2service;AccountKey=yYvzPBs1ws6W75/rWNWgjGOOu8DZBksIjpDlbLWNSklaxIU26RVnFcVmgFO1iB8IhIYrPioK4nWwKxJkHH6bgA==" />
+    </ConfigurationSettings>
+  </Role>
+</ServiceConfiguration>
